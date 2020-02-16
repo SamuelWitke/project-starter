@@ -1,7 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const { Post } = db;
+const { Projects, sequelize} = db;
+const squel = require("squel").useFlavour("postgres");
+const Sequelize = require("sequelize");
+const { QueryTypes } = require('sequelize');
+
+
+
+
+const fieldReg = /([a-zA-Z]*)\.([a-zA-Z]*)/g;
+const quote = txt => txt.replace(fieldReg, `"$1"."$2"`);
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -15,17 +24,42 @@ const { Post } = db;
 // explore other patterns to reduce code duplication.
 // TODO: Can you spot where we have some duplication below?
 
+const toLiteral = query => Sequelize.literal(`(${quote(query.toString())})`);
 
-router.get('/', (req,res) => {
-  Post.findAll({})
-    .then(posts => res.json(posts));
+
+const COUNT_ITEMS = squel
+  // don't use squel `autoQuoteAliasNames`
+  // • isn't reliable enough for our sub-queries
+  .select({ autoQuoteAliasNames: false })
+  // force integer on count
+  .field(`SUM(projects.Hours)`)
+  .where(`projects.Billable = 'Y'`)
+  .from("projects");
+  
+  /*
+SELECT "Client", "Project", SUM("Hours") as "Hours", SUM(CASE WHEN "Billable" = 'Yes' THEN "Hours" ELSE 0 END) as "BillableHours", (SUM(CASE WHEN "Billable" = 'Yes' THEN "Hours" * "Billable_Rate" ELSE 0 END)) as "Billable" 
+from projects A
+Group by "Project", "Client"
+ORDER BY "BillableHours" DESC;
+*/
+
+
+router.get('/', async (req,res) => {
+  const val = await sequelize.query(
+    `SELECT "Client", "Project", SUM("Hours") as Hours, SUM(CASE WHEN "Billable" = 'Yes' THEN "Hours" ELSE 0 END) as "BillableHours", (SUM(CASE WHEN "Billable" = 'Yes' THEN "Hours" * "Billable_Rate" ELSE 0 END)) as Billable from projects A Group by "Project", "Client" ORDER BY "BillableHours" DESC;`
+    ,
+    {
+      type: QueryTypes.SELECT
+    }
+  );
+  return res.json(val);
 });
 
 
 router.post('/', (req, res) => {
   let { content } = req.body;
   
-  Post.create({ content })
+  Projects.create({ content })
     .then(post => {
       res.status(201).json(post);
     })
@@ -37,7 +71,7 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  Post.findByPk(id)
+  Projects.findByPk(id)
     .then(post => {
       if(!post) {
         return res.sendStatus(404);
@@ -50,7 +84,7 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
-  Post.findByPk(id)
+  Projects.findByPk(id)
     .then(post => {
       if(!post) {
         return res.sendStatus(404);
@@ -70,7 +104,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  Post.findByPk(id)
+  Projects.findByPk(id)
     .then(post => {
       if(!post) {
         return res.sendStatus(404);
