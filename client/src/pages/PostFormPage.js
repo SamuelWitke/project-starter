@@ -1,5 +1,10 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 class PostFormPage extends React.Component {
   state = {
@@ -8,13 +13,17 @@ class PostFormPage extends React.Component {
     content: '',
   }
 
-  contentChanged = (event) => {
+   handleChange = name => (event) => {
     this.setState({
-      content: event.target.value
+      content: {
+        ...this.state.content,
+        [name]: event.target.value,
+      }
     });
   }
 
   savePost = (event) => {
+    console.log(this.state.content)
     fetch("/api/posts/", {
       method: 'POST',
       credentials: 'include',
@@ -58,13 +67,85 @@ class PostFormPage extends React.Component {
       <div className="col-10 col-md-8 col-lg-7">
         { errorMessage }
         <div className="input-group">
-          <input 
-            type="text" 
-            placeholder="Add your words of wisdom here..." 
-            value={this.state.content}
-            className="form-control mr-3 rounded"
-            onChange={this.contentChanged}
+        <Typography variant="h6" gutterBottom>
+        Shipping address
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            onChange={this.handleChange("First_Name")}
+            required
+            name="First_Name"
+            label="First name"
+            fullWidth
           />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            onChange={this.handleChange("Last_Name")}
+            name="Last_Name"
+            label="Last name"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            onChange={this.handleChange("Client")}
+            name="Client"
+            label="Client"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            type="number"
+            onChange={this.handleChange("Hours")}
+            name="Hours"
+            label="Hours"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            onChange={this.handleChange("Project")}
+            name="Project"
+            label="Project"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            name="Project_Code"
+            label="Project Code"
+            onChange={this.handleChange("Project_Code")}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            onChange={this.handleChange("Billable")}
+            name="Billable"
+            label="Billable Yes/No"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            type="number"
+            onChange={this.handleChange("Billable_Rate")}
+            name="Billable_Rate"
+            label="Billable Rate"
+            fullWidth
+          />
+        </Grid>
+      </Grid>
           <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
         </div>
       </div>

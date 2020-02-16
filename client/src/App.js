@@ -16,6 +16,18 @@ import './App.css';
 function Navigation(props) {
   return (
     <nav className="navbar navbar-expand-sm ">
+       <ul className="navbar-nav mr-auto">
+       <li className="nav-item">
+       <NavLink className="nav-link" exact to="/">
+           Table  
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/posts/new">
+            Create a Entry 
+          </NavLink>
+        </li>
+      </ul>
     </nav>
   );
 }

@@ -1,0 +1,687 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.5
+-- Dumped by pg_dump version 11.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: projects; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.projects (
+    id integer NOT NULL,
+    "Date" text,
+    "Client" text,
+    "Project" text,
+    "Project_Code" text NOT NULL,
+    "Hours" numeric,
+    "Billable" text,
+    "First_Name" text,
+    "Last_Name" text,
+    "Billable_Rate" integer,
+    "createdAt" date,
+    "updatedAt" date
+);
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.projects_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.projects_id_seq OWNED BY public.projects.id;
+
+
+--
+-- Name: projects id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.projects ALTER COLUMN id SET DEFAULT nextval('public.projects_id_seq'::regclass);
+
+
+--
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.projects (id, "Date", "Client", "Project", "Project_Code", "Hours", "Billable", "First_Name", "Last_Name", "Billable_Rate", "createdAt", "updatedAt") FROM stdin;
+1	4/3/17	Anil	Ethereum	RD001	3.84	No	Robert	Powell	0	\N	\N
+2	4/3/17	Olith	Pharos	DV002	7.69	Yes	Hubert	Green	80	\N	\N
+3	4/3/17	Olith	Pharos	DV002	4.46	Yes	Bradley	Hale	80	\N	\N
+4	4/3/17	Olith	Pharos	DV002	7.57	Yes	Rudy	Parker	80	\N	\N
+5	4/3/17	Prosaria	Business Development	GM001	0.92	No	Walter	Silva	0	\N	\N
+6	4/3/17	Prosaria	Conference/Training	GM005	7.97	No	Tabitha	Jenkins	0	\N	\N
+7	4/3/17	Prosaria	Team Development (Non-Training)	GM006	3.29	No	Tommy	Nash	0	\N	\N
+8	4/3/17	Prosaria	Admin/Legal	GM002	2.21	No	Tommy	Nash	0	\N	\N
+9	4/3/17	Prosaria	Conference/Training	GM005	3.84	No	Bradley	Hale	0	\N	\N
+10	4/3/17	Prosaria	Admin/Legal	GM002	2.11	No	Bradley	Hale	0	\N	\N
+11	4/3/17	Prosaria	Paid Time Off	GM003	7.87	No	Neal	Gordon	0	\N	\N
+12	4/3/17	Prosaria	Team Development (Non-Training)	GM006	3.96	No	Robert	Powell	0	\N	\N
+13	4/3/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.80	Yes	Walter	Silva	70	\N	\N
+14	4/3/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.73	Yes	Faye	Cain	70	\N	\N
+15	4/3/17	Twitri	CLOB Rearchitecture	BGC001	6.26	Yes	Walter	Silva	50	\N	\N
+16	4/3/17	Twitri	CLOB Rearchitecture	BGC001	2.54	No	Tommy	Nash	0	\N	\N
+17	4/3/17	Twitri	CLOB Rearchitecture	BGC001	8.14	Yes	Eugene	Kim	70	\N	\N
+18	4/3/17	Twitri	CLOB Rearchitecture	BGC001	8.01	Yes	Emma	Clarke	50	\N	\N
+19	4/4/17	Anil	Ethereum	RD001	8.15	No	Tabitha	Jenkins	0	\N	\N
+20	4/4/17	Anil	Ethereum	RD001	8.39	No	Bernice	Rivera	0	\N	\N
+21	4/4/17	Anil	Ethereum	RD001	1.97	No	Robert	Powell	0	\N	\N
+22	4/4/17	Anil	Ethereum	RD001	4.21	No	Robert	Powell	0	\N	\N
+23	4/4/17	Audosis	Project Wildfire	Audosis003	2.48	No	Tommy	Nash	0	\N	\N
+24	4/4/17	Audosis	Project Wildfire	Audosis003	0.39	Yes	Walter	Silva	70	\N	\N
+25	4/4/17	Audosis	Project Wildfire	Audosis003	1.59	Yes	Robert	Powell	70	\N	\N
+26	4/4/17	Meecee	Google Drive Integration	FSG03	0.76	No	Tommy	Nash	0	\N	\N
+27	4/4/17	Olith	Pharos	DV002	5.77	Yes	Bradley	Hale	80	\N	\N
+28	4/4/17	Olith	Pharos	DV002	0.52	No	Tommy	Nash	0	\N	\N
+29	4/4/17	Olith	Pharos	DV002	7.96	Yes	Hubert	Green	80	\N	\N
+30	4/4/17	Olith	Pharos	DV002	7.95	Yes	Rudy	Parker	80	\N	\N
+31	4/4/17	Prosaria	Business Development	GM001	2.48	No	Tommy	Nash	0	\N	\N
+32	4/4/17	Prosaria	Team Development (Non-Training)	GM006	1.99	No	Tommy	Nash	0	\N	\N
+33	4/4/17	Prosaria	Business Development	GM001	4.17	No	Walter	Silva	0	\N	\N
+34	4/4/17	Prosaria	Conference/Training	GM005	4.35	No	Neal	Gordon	0	\N	\N
+35	4/4/17	Roonder Technologies LLC	Roonder 3.0	TM001	2.30	Yes	Walter	Silva	70	\N	\N
+36	4/4/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.63	Yes	Faye	Cain	70	\N	\N
+37	4/4/17	Roonder Technologies LLC	Roonder 3.0	TM001	3.78	Yes	Neal	Gordon	70	\N	\N
+38	4/4/17	Twitri	CLOB Rearchitecture	BGC001	1.53	Yes	Walter	Silva	50	\N	\N
+39	4/4/17	Twitri	CLOB Rearchitecture	BGC001	1.00	No	Tommy	Nash	0	\N	\N
+40	4/4/17	Twitri	CLOB Rearchitecture	BGC001	8.06	Yes	Eugene	Kim	70	\N	\N
+41	4/4/17	Twitri	CLOB Rearchitecture	BGC001	8.03	Yes	Emma	Clarke	50	\N	\N
+42	4/5/17	Anil	Ethereum	RD001	7.94	No	Bernice	Rivera	0	\N	\N
+43	4/5/17	Anil	Ethereum	RD001	5.05	No	Neal	Gordon	0	\N	\N
+44	4/5/17	Anil	Ethereum	RD001	8.28	No	Tabitha	Jenkins	0	\N	\N
+45	4/5/17	Anil	Ethereum	RD001	2.66	No	Robert	Powell	0	\N	\N
+46	4/5/17	Audosis	Project Wildfire	Audosis003	2.27	Yes	Walter	Silva	70	\N	\N
+47	4/5/17	Audosis	Project Wildfire	Audosis003	3.39	Yes	Tommy	Nash	70	\N	\N
+48	4/5/17	Audosis	Project Wildfire	Audosis003	0.87	Yes	Walter	Silva	70	\N	\N
+49	4/5/17	Audosis	Project Wildfire	Audosis003	3.01	Yes	Robert	Powell	70	\N	\N
+50	4/5/17	Audosis	Project Wildfire	Audosis003	2.20	Yes	Robert	Powell	70	\N	\N
+51	4/5/17	Olith	Pharos	DV002	8.20	Yes	Bradley	Hale	80	\N	\N
+52	4/5/17	Olith	Pharos	DV002	7.56	Yes	Hubert	Green	80	\N	\N
+53	4/5/17	Olith	Pharos	DV002	7.61	Yes	Rudy	Parker	80	\N	\N
+54	4/5/17	Prosaria	Conference/Training	GM005	4.34	No	Catherine	Ford	0	\N	\N
+55	4/5/17	Prosaria	Business Development	GM001	0.27	No	Walter	Silva	0	\N	\N
+56	4/5/17	Prosaria	Team Development (Non-Training)	GM006	1.67	No	Tommy	Nash	0	\N	\N
+57	4/5/17	Prosaria	Business Development	GM001	1.50	No	Tommy	Nash	0	\N	\N
+58	4/5/17	Prosaria	Team Development (Non-Training)	GM006	1.18	No	Tommy	Nash	0	\N	\N
+59	4/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.94	Yes	Faye	Cain	70	\N	\N
+60	4/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.55	Yes	Walter	Silva	70	\N	\N
+61	4/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	2.71	Yes	Neal	Gordon	70	\N	\N
+62	4/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	4.03	Yes	Catherine	Ford	70	\N	\N
+63	4/5/17	Twitri	CLOB Rearchitecture	BGC001	1.55	Yes	Walter	Silva	50	\N	\N
+64	4/5/17	Twitri	CLOB Rearchitecture	BGC001	8.08	Yes	Emma	Clarke	50	\N	\N
+65	4/5/17	Twitri	CLOB Rearchitecture	BGC001	8.82	Yes	Eugene	Kim	70	\N	\N
+66	4/6/17	Anil	Ethereum	RD001	7.81	No	Tabitha	Jenkins	0	\N	\N
+67	4/6/17	Anil	Ethereum	RD001	1.85	No	Neal	Gordon	0	\N	\N
+68	4/6/17	Audosis	Project Wildfire	Audosis003	4.50	Yes	Walter	Silva	70	\N	\N
+69	4/6/17	Audosis	Project Wildfire	Audosis003	4.34	Yes	Tommy	Nash	70	\N	\N
+70	4/6/17	Audosis	Project Wildfire	Audosis003	2.82	Yes	Robert	Powell	70	\N	\N
+71	4/6/17	Audosis	Project Wildfire	Audosis003	1.05	Yes	Robert	Powell	70	\N	\N
+72	4/6/17	Audosis	Project Wildfire	Audosis003	3.73	Yes	Robert	Powell	70	\N	\N
+73	4/6/17	Audosis	Project Wildfire	Audosis003	0.13	No	Tommy	Nash	0	\N	\N
+74	4/6/17	Olith	Pharos	DV002	8.93	Yes	Bradley	Hale	80	\N	\N
+75	4/6/17	Olith	Pharos	DV002	8.04	Yes	Hubert	Green	80	\N	\N
+76	4/6/17	Olith	Pharos	DV002	9.40	Yes	Rudy	Parker	80	\N	\N
+77	4/6/17	Prosaria	Business Development	GM001	1.25	No	Walter	Silva	0	\N	\N
+78	4/6/17	Prosaria	Business Development	GM001	1.01	No	Tommy	Nash	0	\N	\N
+79	4/6/17	Prosaria	Business Development	GM001	1.22	No	Tommy	Nash	0	\N	\N
+80	4/6/17	Prosaria	Paid Time Off	GM003	7.57	No	Bernice	Rivera	0	\N	\N
+81	4/6/17	Roonder Technologies LLC	Roonder 3.0	TM001	0.92	Yes	Walter	Silva	70	\N	\N
+82	4/6/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.91	Yes	Faye	Cain	70	\N	\N
+83	4/6/17	Roonder Technologies LLC	Roonder 3.0	TM001	6.08	Yes	Neal	Gordon	70	\N	\N
+84	4/6/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.83	Yes	Catherine	Ford	70	\N	\N
+85	4/6/17	Twitri	CLOB Rearchitecture	BGC001	3.01	Yes	Walter	Silva	50	\N	\N
+86	4/6/17	Twitri	CLOB Rearchitecture	BGC001	7.88	Yes	Emma	Clarke	50	\N	\N
+87	4/6/17	Twitri	CLOB Rearchitecture	BGC001	1.94	Yes	Eugene	Kim	70	\N	\N
+88	4/6/17	Twitri	CLOB Rearchitecture	BGC001	6.04	Yes	Eugene	Kim	70	\N	\N
+89	4/6/17	Twitri	CLOB Rearchitecture	BGC001	0.92	No	Tommy	Nash	0	\N	\N
+90	4/7/17	Anil	Ethereum	RD001	8.03	No	Tabitha	Jenkins	0	\N	\N
+91	4/7/17	Anil	React Native	RD002	2.81	No	Rudy	Parker	0	\N	\N
+92	4/7/17	Audosis	Project Wildfire	Audosis003	7.89	Yes	Robert	Powell	70	\N	\N
+93	4/7/17	Olith	Pharos	DV002	5.03	Yes	Bradley	Hale	80	\N	\N
+94	4/7/17	Olith	Pharos	DV002	8.05	Yes	Hubert	Green	80	\N	\N
+95	4/7/17	Olith	Pharos	DV002	3.78	Yes	Rudy	Parker	80	\N	\N
+96	4/7/17	Olith	Pharos	DV002	0.84	No	Tommy	Nash	0	\N	\N
+97	4/7/17	Prosaria	Admin/Legal	GM002	4.40	No	Bradley	Hale	0	\N	\N
+98	4/7/17	Prosaria	Team Development (Non-Training)	GM006	1.86	No	Faye	Cain	0	\N	\N
+99	4/7/17	Prosaria	Business Development	GM001	2.78	No	Neal	Gordon	0	\N	\N
+100	4/7/17	Prosaria	Team Development (Non-Training)	GM006	2.00	No	Tommy	Nash	0	\N	\N
+101	4/7/17	Prosaria	Business Development	GM001	1.29	No	Tommy	Nash	0	\N	\N
+102	4/7/17	Prosaria	Team Development (Non-Training)	GM006	1.64	No	Tommy	Nash	0	\N	\N
+103	4/7/17	Prosaria	Business Development	GM001	1.09	No	Tommy	Nash	0	\N	\N
+104	4/7/17	Prosaria	Business Development	GM001	3.92	No	Walter	Silva	0	\N	\N
+105	4/7/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.91	Yes	Faye	Cain	70	\N	\N
+106	4/7/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.65	Yes	Catherine	Ford	70	\N	\N
+107	4/7/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.49	Yes	Neal	Gordon	70	\N	\N
+108	4/7/17	Roonder Technologies LLC	Roonder 3.0	TM001	2.11	Yes	Walter	Silva	70	\N	\N
+109	4/7/17	Twitri	CLOB Rearchitecture	BGC001	8.58	Yes	Eugene	Kim	70	\N	\N
+110	4/7/17	Twitri	CLOB Rearchitecture	BGC001	1.39	No	Tommy	Nash	0	\N	\N
+111	4/7/17	Twitri	CLOB Rearchitecture	BGC001	7.59	Yes	Emma	Clarke	50	\N	\N
+112	4/7/17	Twitri	CLOB Rearchitecture	BGC001	3.35	Yes	Walter	Silva	50	\N	\N
+113	4/10/17	Anil	Ethereum	RD001	7.72	No	Tabitha	Jenkins	0	\N	\N
+114	4/10/17	Audosis	Project Wildfire	Audosis003	2.10	Yes	Tommy	Nash	70	\N	\N
+115	4/10/17	Audosis	Project Wildfire	Audosis003	1.33	Yes	Walter	Silva	70	\N	\N
+116	4/10/17	Audosis	Project Wildfire	Audosis003	8.24	Yes	Robert	Powell	70	\N	\N
+117	4/10/17	Olith	Pharos	DV002	8.47	Yes	Hubert	Green	80	\N	\N
+118	4/10/17	Olith	Pharos	DV002	7.95	Yes	Rudy	Parker	80	\N	\N
+119	4/10/17	Prosaria	Admin/Legal	GM002	8.16	No	Bradley	Hale	0	\N	\N
+120	4/10/17	Prosaria	Conference/Training	GM005	7.62	No	Faye	Cain	0	\N	\N
+121	4/10/17	Prosaria	Conference/Training	GM005	1.13	No	Tommy	Nash	0	\N	\N
+122	4/10/17	Prosaria	Business Development	GM001	1.08	No	Walter	Silva	0	\N	\N
+123	4/10/17	Prosaria	Admin/Legal	GM002	0.12	No	Tommy	Nash	0	\N	\N
+124	4/10/17	Prosaria	Business Development	GM001	0.58	No	Tommy	Nash	0	\N	\N
+125	4/10/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.48	Yes	Catherine	Ford	70	\N	\N
+126	4/10/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.44	Yes	Walter	Silva	70	\N	\N
+127	4/10/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.97	Yes	Neal	Gordon	70	\N	\N
+128	4/10/17	Twitri	CLOB Rearchitecture	BGC001	4.19	No	Tommy	Nash	0	\N	\N
+129	4/10/17	Twitri	CLOB Rearchitecture	BGC001	5.54	Yes	Walter	Silva	50	\N	\N
+130	4/10/17	Twitri	CLOB Rearchitecture	BGC001	5.84	Yes	Eugene	Kim	70	\N	\N
+131	4/10/17	Twitri	CLOB Rearchitecture	BGC001	8.04	Yes	Emma	Clarke	50	\N	\N
+132	4/11/17	Anil	Ethereum	RD001	8.41	No	Tabitha	Jenkins	0	\N	\N
+133	4/11/17	Audosis	Project Wildfire	Audosis003	6.37	Yes	Robert	Powell	70	\N	\N
+134	4/11/17	Audosis	Project Wildfire	Audosis003	2.14	Yes	Robert	Powell	70	\N	\N
+135	4/11/17	Audosis	Project Wildfire	Audosis003	5.37	Yes	Walter	Silva	70	\N	\N
+136	4/11/17	Audosis	Project Wildfire	Audosis003	1.90	Yes	Bernice	Rivera	70	\N	\N
+137	4/11/17	Olith	Pharos	DV002	8.00	Yes	Hubert	Green	80	\N	\N
+138	4/11/17	Olith	Pharos	DV002	7.77	Yes	Rudy	Parker	80	\N	\N
+139	4/11/17	Olith	Pharos	DV002	1.10	Yes	Neal	Gordon	80	\N	\N
+140	4/11/17	Prosaria	Paid Time Off	GM003	7.78	No	Bradley	Hale	0	\N	\N
+141	4/11/17	Prosaria	Conference/Training	GM005	8.49	No	Faye	Cain	0	\N	\N
+142	4/11/17	Prosaria	Conference/Training	GM005	7.75	No	Tommy	Nash	0	\N	\N
+143	4/11/17	Prosaria	Business Development	GM001	0.75	No	Walter	Silva	0	\N	\N
+144	4/11/17	Prosaria	Training	GM017	6.03	No	Bernice	Rivera	0	\N	\N
+145	4/11/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.47	Yes	Catherine	Ford	70	\N	\N
+146	4/11/17	Roonder Technologies LLC	Roonder 3.0	TM001	2.44	Yes	Walter	Silva	70	\N	\N
+147	4/11/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.42	Yes	Neal	Gordon	70	\N	\N
+148	4/11/17	Twitri	CLOB Rearchitecture	BGC001	1.48	Yes	Walter	Silva	50	\N	\N
+149	4/11/17	Twitri	CLOB Rearchitecture	BGC001	8.65	Yes	Eugene	Kim	70	\N	\N
+150	4/11/17	Twitri	CLOB Rearchitecture	BGC001	8.11	Yes	Emma	Clarke	50	\N	\N
+151	4/12/17	Anil	Ethereum	RD001	7.74	No	Tabitha	Jenkins	0	\N	\N
+152	4/12/17	Audosis	Project Wildfire	Audosis003	2.37	Yes	Walter	Silva	70	\N	\N
+153	4/12/17	Audosis	Project Wildfire	Audosis003	2.46	Yes	Bernice	Rivera	70	\N	\N
+154	4/12/17	Audosis	Project Wildfire	Audosis003	7.06	Yes	Robert	Powell	70	\N	\N
+155	4/12/17	Audosis	Project Wildfire	Audosis003	1.26	Yes	Robert	Powell	70	\N	\N
+156	4/12/17	Olith	Pharos	DV002	7.54	Yes	Hubert	Green	80	\N	\N
+157	4/12/17	Olith	Pharos	DV002	8.16	Yes	Rudy	Parker	80	\N	\N
+158	4/12/17	Prosaria	Paid Time Off	GM003	8.41	No	Bradley	Hale	0	\N	\N
+159	4/12/17	Prosaria	Conference/Training	GM005	7.80	No	Tommy	Nash	0	\N	\N
+160	4/12/17	Prosaria	Business Development	GM001	2.22	No	Walter	Silva	0	\N	\N
+161	4/12/17	Prosaria	Training	GM017	6.26	No	Bernice	Rivera	0	\N	\N
+162	4/12/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.30	Yes	Catherine	Ford	70	\N	\N
+163	4/12/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.62	Yes	Neal	Gordon	70	\N	\N
+164	4/12/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.92	Yes	Walter	Silva	70	\N	\N
+165	4/12/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.07	Yes	Faye	Cain	70	\N	\N
+166	4/12/17	Twitri	CLOB Rearchitecture	BGC001	2.52	Yes	Walter	Silva	50	\N	\N
+167	4/12/17	Twitri	CLOB Rearchitecture	BGC001	8.00	Yes	Emma	Clarke	50	\N	\N
+168	4/12/17	Twitri	CLOB Rearchitecture	BGC001	8.85	Yes	Eugene	Kim	70	\N	\N
+169	4/13/17	Anil	Ethereum	RD001	7.63	No	Tabitha	Jenkins	0	\N	\N
+170	4/13/17	Audosis	Project Wildfire	Audosis003	5.01	Yes	Bernice	Rivera	70	\N	\N
+171	4/13/17	Audosis	Project Wildfire	Audosis003	4.48	Yes	Tommy	Nash	70	\N	\N
+172	4/13/17	Audosis	Project Wildfire	Audosis003	1.45	Yes	Robert	Powell	70	\N	\N
+173	4/13/17	Audosis	Project Wildfire	Audosis003	2.24	Yes	Robert	Powell	70	\N	\N
+174	4/13/17	Audosis	Project Wildfire	Audosis003	3.89	Yes	Robert	Powell	70	\N	\N
+175	4/13/17	Audosis	Project Wildfire	Audosis003	4.62	Yes	Walter	Silva	70	\N	\N
+176	4/13/17	Olith	Pharos	DV002	2.47	Yes	Neal	Gordon	80	\N	\N
+177	4/13/17	Olith	Pharos	DV002	7.99	Yes	Rudy	Parker	80	\N	\N
+178	4/13/17	Olith	Pharos	DV002	8.44	Yes	Hubert	Green	80	\N	\N
+179	4/13/17	Prosaria	Paid Time Off	GM003	8.17	No	Bradley	Hale	0	\N	\N
+180	4/13/17	Prosaria	Training	GM017	2.89	No	Bernice	Rivera	0	\N	\N
+181	4/13/17	Prosaria	Business Development	GM001	2.12	No	Tommy	Nash	0	\N	\N
+182	4/13/17	Prosaria	Business Development	GM001	1.95	No	Tommy	Nash	0	\N	\N
+183	4/13/17	Prosaria	Business Development	GM001	1.04	No	Walter	Silva	0	\N	\N
+184	4/13/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.79	Yes	Neal	Gordon	70	\N	\N
+185	4/13/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.23	Yes	Catherine	Ford	70	\N	\N
+186	4/13/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.75	Yes	Faye	Cain	70	\N	\N
+187	4/13/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.75	Yes	Walter	Silva	70	\N	\N
+188	4/13/17	Twitri	CLOB Rearchitecture	BGC001	7.53	Yes	Emma	Clarke	50	\N	\N
+189	4/13/17	Twitri	CLOB Rearchitecture	BGC001	6.91	Yes	Eugene	Kim	70	\N	\N
+190	4/13/17	Twitri	CLOB Rearchitecture	BGC001	1.56	Yes	Walter	Silva	50	\N	\N
+191	4/14/17	Anil	Ethereum	RD001	8.25	No	Tabitha	Jenkins	0	\N	\N
+192	4/14/17	Audosis	Project Wildfire	Audosis003	2.95	Yes	Walter	Silva	70	\N	\N
+193	4/14/17	Audosis	Project Wildfire	Audosis003	2.61	Yes	Robert	Powell	70	\N	\N
+194	4/14/17	Audosis	Project Wildfire	Audosis003	4.79	Yes	Robert	Powell	70	\N	\N
+195	4/14/17	Audosis	Project Wildfire	Audosis003	2.91	Yes	Tommy	Nash	70	\N	\N
+196	4/14/17	Olith	Pharos	DV002	8.32	Yes	Hubert	Green	80	\N	\N
+197	4/14/17	Olith	Pharos	DV002	4.23	Yes	Rudy	Parker	80	\N	\N
+198	4/14/17	Prosaria	Paid Time Off	GM003	7.62	No	Bradley	Hale	0	\N	\N
+199	4/14/17	Prosaria	Team Development (Non-Training)	GM006	2.07	No	Faye	Cain	0	\N	\N
+200	4/14/17	Prosaria	Business Development	GM001	1.11	No	Walter	Silva	0	\N	\N
+201	4/14/17	Prosaria	Admin/Legal	GM002	2.14	No	Tommy	Nash	0	\N	\N
+202	4/14/17	Prosaria	Business Development	GM001	1.87	No	Tommy	Nash	0	\N	\N
+203	4/14/17	Prosaria	Conference/Training	GM005	0.35	No	Tommy	Nash	0	\N	\N
+204	4/14/17	Prosaria	Business Development	GM001	0.55	No	Tommy	Nash	0	\N	\N
+205	4/14/17	Prosaria	Conference/Training	GM005	3.80	No	Rudy	Parker	0	\N	\N
+206	4/14/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.59	Yes	Faye	Cain	70	\N	\N
+207	4/14/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.51	Yes	Walter	Silva	70	\N	\N
+208	4/14/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.54	Yes	Catherine	Ford	70	\N	\N
+209	4/14/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.51	Yes	Neal	Gordon	70	\N	\N
+210	4/14/17	Twitri	CLOB Rearchitecture	BGC001	3.47	Yes	Walter	Silva	50	\N	\N
+211	4/14/17	Twitri	CLOB Rearchitecture	BGC001	7.73	Yes	Eugene	Kim	70	\N	\N
+212	4/14/17	Twitri	CLOB Rearchitecture	BGC001	8.32	Yes	Emma	Clarke	50	\N	\N
+213	4/17/17	Anil	Ethereum	RD001	7.72	No	Tabitha	Jenkins	0	\N	\N
+214	4/17/17	Anil	Watchlist Demo	RD003	7.99	No	Eugene	Kim	0	\N	\N
+215	4/17/17	Anil	Watchlist Demo	RD003	7.69	No	Emma	Clarke	0	\N	\N
+216	4/17/17	Audosis	Project Wildfire	Audosis003	0.21	Yes	Walter	Silva	70	\N	\N
+217	4/17/17	Audosis	Project Wildfire	Audosis003	0.89	Yes	Tommy	Nash	70	\N	\N
+218	4/17/17	Audosis	Project Wildfire	Audosis003	8.05	Yes	Robert	Powell	70	\N	\N
+219	4/17/17	Olith	Pharos	DV002	7.54	Yes	Bradley	Hale	80	\N	\N
+220	4/17/17	Olith	Pharos	DV002	8.36	Yes	Hubert	Green	80	\N	\N
+221	4/17/17	Olith	Pharos	DV002	8.24	Yes	Rudy	Parker	80	\N	\N
+222	4/17/17	Prosaria	Business Development	GM001	6.30	No	Walter	Silva	0	\N	\N
+223	4/17/17	Prosaria	Admin/Legal	GM002	3.53	No	Bradley	Hale	0	\N	\N
+224	4/17/17	Prosaria	Admin/Legal	GM002	2.77	No	Tommy	Nash	0	\N	\N
+225	4/17/17	Prosaria	Business Development	GM001	0.72	No	Tommy	Nash	0	\N	\N
+226	4/17/17	Prosaria	Business Development	GM001	2.28	No	Tommy	Nash	0	\N	\N
+227	4/17/17	Prosaria	Business Development	GM001	1.08	No	Tommy	Nash	0	\N	\N
+228	4/17/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.09	Yes	Catherine	Ford	70	\N	\N
+229	4/17/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.28	Yes	Walter	Silva	70	\N	\N
+230	4/17/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.76	Yes	Neal	Gordon	70	\N	\N
+231	4/17/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.10	Yes	Faye	Cain	70	\N	\N
+232	4/18/17	Anil	Watchlist Demo	RD003	7.82	No	Eugene	Kim	0	\N	\N
+233	4/18/17	Anil	Ethereum	RD001	8.01	No	Tabitha	Jenkins	0	\N	\N
+234	4/18/17	Anil	Watchlist Demo	RD003	8.44	No	Emma	Clarke	0	\N	\N
+235	4/18/17	Audosis	Project Wildfire	Audosis003	2.02	Yes	Walter	Silva	70	\N	\N
+236	4/18/17	Audosis	Project Wildfire	Audosis003	1.62	Yes	Tommy	Nash	70	\N	\N
+237	4/18/17	Audosis	Project Wildfire	Audosis003	2.45	Yes	Robert	Powell	70	\N	\N
+238	4/18/17	Audosis	Project Wildfire	Audosis003	5.85	Yes	Robert	Powell	70	\N	\N
+239	4/18/17	Olith	Pharos	DV002	8.35	Yes	Hubert	Green	80	\N	\N
+240	4/18/17	Olith	Pharos	DV002	7.75	Yes	Bradley	Hale	80	\N	\N
+241	4/18/17	Olith	Pharos	DV002	0.64	No	Tommy	Nash	0	\N	\N
+242	4/18/17	Olith	Pharos	DV002	7.51	Yes	Rudy	Parker	80	\N	\N
+243	4/18/17	Prosaria	Business Development	GM001	2.19	No	Neal	Gordon	0	\N	\N
+244	4/18/17	Prosaria	Business Development	GM001	0.62	No	Neal	Gordon	0	\N	\N
+245	4/18/17	Prosaria	Business Development	GM001	3.41	No	Walter	Silva	0	\N	\N
+246	4/18/17	Prosaria	Business Development	GM001	2.36	No	Bradley	Hale	0	\N	\N
+247	4/18/17	Prosaria	Admin/Legal	GM002	0.76	No	Tommy	Nash	0	\N	\N
+248	4/18/17	Prosaria	Business Development	GM001	0.19	No	Tommy	Nash	0	\N	\N
+249	4/18/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.10	Yes	Neal	Gordon	70	\N	\N
+250	4/18/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.47	Yes	Catherine	Ford	70	\N	\N
+251	4/18/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.56	Yes	Walter	Silva	70	\N	\N
+252	4/18/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.90	Yes	Faye	Cain	70	\N	\N
+253	4/18/17	Twitri	CLOB Rearchitecture	BGC001	3.63	No	Tommy	Nash	0	\N	\N
+254	4/18/17	Twitri	CLOB Rearchitecture	BGC001	3.62	Yes	Walter	Silva	50	\N	\N
+255	4/19/17	Anil	Watchlist Demo	RD003	8.34	No	Eugene	Kim	0	\N	\N
+256	4/19/17	Anil	React Native	RD002	7.79	No	Rudy	Parker	0	\N	\N
+257	4/19/17	Anil	Ethereum	RD001	8.27	No	Tabitha	Jenkins	0	\N	\N
+258	4/19/17	Audosis	Project Wildfire	Audosis003	8.34	Yes	Robert	Powell	70	\N	\N
+259	4/19/17	Olith	Pharos	DV002	7.79	Yes	Hubert	Green	80	\N	\N
+260	4/19/17	Prosaria	Business Development	GM001	8.46	No	Tommy	Nash	0	\N	\N
+261	4/19/17	Prosaria	Paid Time Off	GM003	8.45	No	Catherine	Ford	0	\N	\N
+262	4/19/17	Prosaria	Paid Time Off	GM003	8.05	No	Emma	Clarke	0	\N	\N
+263	4/19/17	Prosaria	Business Development	GM001	8.41	No	Neal	Gordon	0	\N	\N
+264	4/19/17	Prosaria	Training	GM017	7.87	No	Bernice	Rivera	0	\N	\N
+265	4/19/17	Prosaria	Conference/Training	GM005	8.42	No	Bradley	Hale	0	\N	\N
+266	4/19/17	Prosaria	Business Development	GM001	7.86	No	Walter	Silva	0	\N	\N
+267	4/19/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.79	Yes	Faye	Cain	70	\N	\N
+268	4/20/17	Anil	Watchlist Demo	RD003	8.04	No	Emma	Clarke	0	\N	\N
+269	4/20/17	Anil	Watchlist Demo	RD003	3.85	No	Eugene	Kim	0	\N	\N
+270	4/20/17	Audosis	Project Wildfire	Audosis003	5.72	Yes	Robert	Powell	70	\N	\N
+271	4/20/17	Audosis	Project Wildfire	Audosis003	1.60	Yes	Robert	Powell	70	\N	\N
+272	4/20/17	Audosis	Project Wildfire	Audosis003	0.25	Yes	Bernice	Rivera	70	\N	\N
+273	4/20/17	Audosis	Project Wildfire	Audosis003	1.57	Yes	Walter	Silva	70	\N	\N
+274	4/20/17	Audosis	Project Wildfire	Audosis003	2.11	Yes	Tommy	Nash	70	\N	\N
+275	4/20/17	Olith	Pharos	DV002	8.00	Yes	Hubert	Green	80	\N	\N
+276	4/20/17	Olith	Pharos	DV002	8.41	Yes	Rudy	Parker	80	\N	\N
+277	4/20/17	Prosaria	Team Development (Non-Training)	GM006	0.83	No	Faye	Cain	0	\N	\N
+278	4/20/17	Prosaria	Admin/Legal	GM002	7.78	No	Bernice	Rivera	0	\N	\N
+279	4/20/17	Prosaria	Business Development	GM001	7.95	No	Bradley	Hale	0	\N	\N
+280	4/20/17	Prosaria	Business Development	GM001	6.93	No	Walter	Silva	0	\N	\N
+281	4/20/17	Prosaria	Recruiting	GM018	1.84	No	Tommy	Nash	0	\N	\N
+282	4/20/17	Prosaria	Business Development	GM001	1.21	No	Tommy	Nash	0	\N	\N
+283	4/20/17	Prosaria	Business Development	GM001	1.90	No	Tommy	Nash	0	\N	\N
+284	4/20/17	Prosaria	Paid Time Off	GM003	8.44	No	Tabitha	Jenkins	0	\N	\N
+285	4/20/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.77	Yes	Catherine	Ford	70	\N	\N
+286	4/20/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.79	Yes	Faye	Cain	70	\N	\N
+287	4/20/17	Roonder Technologies LLC	Roonder 3.0	TM001	0.94	Yes	Walter	Silva	70	\N	\N
+288	4/20/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.13	Yes	Neal	Gordon	70	\N	\N
+289	4/20/17	Twitri	CLOB Rearchitecture	BGC001	3.14	No	Eugene	Kim	0	\N	\N
+290	4/20/17	Twitri	CLOB Rearchitecture	BGC001	0.62	No	Tommy	Nash	0	\N	\N
+291	4/21/17	Anil	React Native	RD002	7.36	No	Rudy	Parker	0	\N	\N
+292	4/21/17	Anil	Watchlist Demo	RD003	0.88	No	Emma	Clarke	0	\N	\N
+293	4/21/17	Audosis	Project Wildfire	Audosis003	1.14	Yes	Walter	Silva	70	\N	\N
+294	4/21/17	Audosis	Project Wildfire	Audosis003	7.25	Yes	Robert	Powell	70	\N	\N
+295	4/21/17	Audosis	Project Wildfire	Audosis003	0.70	Yes	Robert	Powell	70	\N	\N
+296	4/21/17	Olith	Pharos	DV002	3.93	Yes	Bradley	Hale	80	\N	\N
+297	4/21/17	Olith	Pharos	DV002	8.33	Yes	Hubert	Green	80	\N	\N
+298	4/21/17	Olith	Pharos	DV002	0.62	Yes	Rudy	Parker	80	\N	\N
+299	4/21/17	Prosaria	Paid Time Off	GM003	7.77	No	Tommy	Nash	0	\N	\N
+300	4/21/17	Prosaria	Admin/Legal	GM002	8.44	No	Bernice	Rivera	0	\N	\N
+301	4/21/17	Prosaria	Business Development	GM001	4.33	No	Bradley	Hale	0	\N	\N
+302	4/21/17	Prosaria	Business Development	GM001	2.73	No	Neal	Gordon	0	\N	\N
+303	4/21/17	Prosaria	Business Development	GM001	2.94	No	Walter	Silva	0	\N	\N
+304	4/21/17	Prosaria	Paid Time Off	GM003	8.20	No	Tabitha	Jenkins	0	\N	\N
+305	4/21/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.87	Yes	Faye	Cain	70	\N	\N
+306	4/21/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.68	Yes	Catherine	Ford	70	\N	\N
+307	4/21/17	Roonder Technologies LLC	Roonder 3.0	TM001	4.51	Yes	Neal	Gordon	70	\N	\N
+308	4/21/17	Roonder Technologies LLC	Roonder 3.0	TM001	2.12	Yes	Walter	Silva	70	\N	\N
+309	4/21/17	Twitri	CLOB Rearchitecture	BGC001	7.18	Yes	Emma	Clarke	50	\N	\N
+310	4/21/17	Twitri	CLOB Rearchitecture	BGC001	2.84	Yes	Walter	Silva	50	\N	\N
+311	4/21/17	Twitri	CLOB Rearchitecture	BGC001	7.59	Yes	Eugene	Kim	70	\N	\N
+312	4/24/17	Anil	Watchlist Demo	RD003	7.68	No	Eugene	Kim	0	\N	\N
+313	4/24/17	Anil	Watchlist Demo	RD003	8.30	No	Emma	Clarke	0	\N	\N
+314	4/24/17	Anil	Watchlist Demo	RD003	1.78	No	Walter	Silva	0	\N	\N
+315	4/24/17	Anil	Ethereum	RD001	7.67	No	Tabitha	Jenkins	0	\N	\N
+316	4/24/17	Audosis	Project Wildfire	Audosis003	2.51	Yes	Tommy	Nash	70	\N	\N
+317	4/24/17	Audosis	Project Wildfire	Audosis003	1.46	Yes	Walter	Silva	70	\N	\N
+318	4/24/17	Audosis	Project Wildfire	Audosis003	5.86	Yes	Robert	Powell	70	\N	\N
+319	4/24/17	Audosis	Project Wildfire	Audosis003	0.81	Yes	Robert	Powell	70	\N	\N
+320	4/24/17	Audosis	Project Wildfire	Audosis003	1.07	Yes	Robert	Powell	70	\N	\N
+321	4/24/17	Olith	Pharos	DV002	7.89	Yes	Bradley	Hale	80	\N	\N
+322	4/24/17	Olith	Pharos	DV002	7.55	Yes	Hubert	Green	80	\N	\N
+323	4/24/17	Olith	Pharos	DV002	8.41	Yes	Rudy	Parker	80	\N	\N
+324	4/24/17	Prosaria	Business Development	GM001	0.18	No	Tommy	Nash	0	\N	\N
+325	4/24/17	Prosaria	Business Development	GM001	0.74	No	Tommy	Nash	0	\N	\N
+326	4/24/17	Prosaria	Admin/Legal	GM002	2.79	No	Tommy	Nash	0	\N	\N
+327	4/24/17	Prosaria	Training	GM017	5.87	No	Catherine	Ford	0	\N	\N
+328	4/24/17	Prosaria	Business Development	GM001	2.44	No	Walter	Silva	0	\N	\N
+329	4/24/17	Prosaria	Paid Time Off	GM003	8.22	No	Neal	Gordon	0	\N	\N
+330	4/24/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.80	Yes	Catherine	Ford	70	\N	\N
+331	4/24/17	Roonder Technologies LLC	Roonder 3.0	TM001	2.15	Yes	Walter	Silva	70	\N	\N
+332	4/24/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.75	Yes	Faye	Cain	70	\N	\N
+333	4/24/17	Twitri	CLOB Rearchitecture	BGC001	0.10	No	Tommy	Nash	0	\N	\N
+334	4/24/17	Twitri	CLOB Rearchitecture	BGC001	1.55	Yes	Walter	Silva	50	\N	\N
+335	4/25/17	Anil	Ethereum	RD001	1.57	No	Neal	Gordon	0	\N	\N
+336	4/25/17	Anil	Ethereum	RD001	1.80	No	Bernice	Rivera	0	\N	\N
+337	4/25/17	Anil	Watchlist Demo	RD003	8.29	No	Eugene	Kim	0	\N	\N
+338	4/25/17	Anil	Watchlist Demo	RD003	8.45	No	Emma	Clarke	0	\N	\N
+339	4/25/17	Anil	Ethereum	RD001	7.88	No	Tabitha	Jenkins	0	\N	\N
+340	4/25/17	Anil	Watchlist Demo	RD003	0.65	No	Walter	Silva	0	\N	\N
+341	4/25/17	Audosis	Project Wildfire	Audosis003	5.13	Yes	Tommy	Nash	70	\N	\N
+342	4/25/17	Audosis	Project Wildfire	Audosis003	0.80	Yes	Bernice	Rivera	70	\N	\N
+343	4/25/17	Audosis	Project Wildfire	Audosis003	4.57	Yes	Walter	Silva	70	\N	\N
+344	4/25/17	Audosis	Project Wildfire	Audosis003	6.99	Yes	Robert	Powell	70	\N	\N
+345	4/25/17	Audosis	Project Wildfire	Audosis003	1.07	Yes	Robert	Powell	70	\N	\N
+346	4/25/17	Olith	Pharos	DV002	7.70	Yes	Bradley	Hale	80	\N	\N
+347	4/25/17	Olith	Pharos	DV002	7.52	Yes	Hubert	Green	80	\N	\N
+348	4/25/17	Olith	Pharos	DV002	1.16	Yes	Neal	Gordon	250	\N	\N
+349	4/25/17	Olith	Pharos	DV002	8.36	Yes	Rudy	Parker	80	\N	\N
+350	4/25/17	Olith	Pharos	DV002	1.91	Yes	Rudy	Parker	250	\N	\N
+351	4/25/17	Prosaria	Recruiting	GM018	0.56	No	Tommy	Nash	0	\N	\N
+352	4/25/17	Prosaria	Admin/Legal	GM002	1.63	No	Tommy	Nash	0	\N	\N
+353	4/25/17	Prosaria	Admin/Legal	GM002	5.16	No	Bernice	Rivera	0	\N	\N
+354	4/25/17	Prosaria	Paid Time Off	GM003	8.35	No	Faye	Cain	0	\N	\N
+355	4/25/17	Prosaria	Business Development	GM001	0.68	No	Walter	Silva	0	\N	\N
+356	4/25/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.07	Yes	Catherine	Ford	70	\N	\N
+357	4/25/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.53	Yes	Neal	Gordon	70	\N	\N
+358	4/25/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.27	Yes	Walter	Silva	70	\N	\N
+359	4/25/17	Twitri	CLOB Rearchitecture	BGC001	0.61	No	Tommy	Nash	0	\N	\N
+360	4/25/17	Twitri	CLOB Rearchitecture	BGC001	1.03	Yes	Walter	Silva	50	\N	\N
+361	4/26/17	Anil	Watchlist Demo	RD003	4.04	No	Eugene	Kim	0	\N	\N
+362	4/26/17	Anil	Watchlist Demo	RD003	3.58	No	Emma	Clarke	0	\N	\N
+363	4/26/17	Anil	Watchlist Demo	RD003	2.30	No	Eugene	Kim	0	\N	\N
+364	4/26/17	Anil	Ethereum	RD001	7.70	No	Tabitha	Jenkins	0	\N	\N
+365	4/26/17	Anil	React Native	RD002	8.11	No	Rudy	Parker	0	\N	\N
+366	4/26/17	Audosis	Project Wildfire	Audosis003	2.23	Yes	Tommy	Nash	70	\N	\N
+367	4/26/17	Audosis	Project Wildfire	Audosis003	1.71	Yes	Walter	Silva	70	\N	\N
+368	4/26/17	Audosis	Project Wildfire	Audosis003	7.42	Yes	Robert	Powell	70	\N	\N
+369	4/26/17	Audosis	Project Wildfire	Audosis003	4.62	Yes	Bernice	Rivera	70	\N	\N
+370	4/26/17	Audosis	Project Wildfire	Audosis003	1.21	Yes	Robert	Powell	70	\N	\N
+371	4/26/17	Olith	Pharos	DV002	8.42	Yes	Bradley	Hale	80	\N	\N
+372	4/26/17	Olith	Pharos	DV002	8.37	Yes	Hubert	Green	80	\N	\N
+373	4/26/17	Olith	Pharos	DV002	3.73	Yes	Emma	Clarke	80	\N	\N
+374	4/26/17	Olith	Pharos	DV002	0.59	Yes	Neal	Gordon	80	\N	\N
+375	4/26/17	Prosaria	Admin/Legal	GM002	0.97	No	Tommy	Nash	0	\N	\N
+376	4/26/17	Prosaria	Business Development	GM001	0.94	No	Tommy	Nash	0	\N	\N
+377	4/26/17	Prosaria	Team Development (Non-Training)	GM006	1.87	No	Eugene	Kim	0	\N	\N
+378	4/26/17	Prosaria	Recruiting	GM018	1.42	No	Tommy	Nash	0	\N	\N
+379	4/26/17	Prosaria	Business Development	GM001	1.26	No	Tommy	Nash	0	\N	\N
+380	4/26/17	Prosaria	Admin/Legal	GM002	1.33	No	Tommy	Nash	0	\N	\N
+381	4/26/17	Prosaria	Business Development	GM001	0.60	No	Walter	Silva	0	\N	\N
+382	4/26/17	Prosaria	Paid Time Off	GM003	3.85	No	Walter	Silva	0	\N	\N
+383	4/26/17	Prosaria	Admin/Legal	GM002	3.43	No	Bernice	Rivera	0	\N	\N
+384	4/26/17	Prosaria	Business Development	GM001	0.56	No	Neal	Gordon	0	\N	\N
+385	4/26/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.85	Yes	Faye	Cain	70	\N	\N
+386	4/26/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.03	Yes	Catherine	Ford	70	\N	\N
+387	4/26/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.57	Yes	Walter	Silva	70	\N	\N
+388	4/26/17	Roonder Technologies LLC	Roonder 3.0	TM001	6.30	Yes	Neal	Gordon	70	\N	\N
+389	4/27/17	Audosis	Project Wildfire	Audosis003	6.77	Yes	Robert	Powell	70	\N	\N
+390	4/27/17	Audosis	Project Wildfire	Audosis003	8.43	Yes	Tabitha	Jenkins	70	\N	\N
+391	4/27/17	Audosis	Project Wildfire	Audosis003	2.79	Yes	Tommy	Nash	70	\N	\N
+392	4/27/17	Audosis	Project Wildfire	Audosis003	1.23	Yes	Robert	Powell	70	\N	\N
+393	4/27/17	Audosis	Project Wildfire	Audosis003	8.26	Yes	Eugene	Kim	70	\N	\N
+394	4/27/17	Audosis	Project Wildfire	Audosis003	7.88	Yes	Bernice	Rivera	70	\N	\N
+395	4/27/17	Audosis	Project Wildfire	Audosis003	0.58	Yes	Neal	Gordon	70	\N	\N
+396	4/27/17	Olith	Pharos	DV002	7.64	Yes	Hubert	Green	80	\N	\N
+397	4/27/17	Olith	Pharos	DV002	1.86	Yes	Bradley	Hale	80	\N	\N
+398	4/27/17	Olith	Pharos	DV002	7.60	Yes	Rudy	Parker	80	\N	\N
+399	4/27/17	Olith	Pharos	DV002	7.84	Yes	Emma	Clarke	80	\N	\N
+400	4/27/17	Prosaria	Paid Time Off	GM003	8.23	No	Walter	Silva	0	\N	\N
+401	4/27/17	Prosaria	Business Development	GM001	0.65	No	Tommy	Nash	0	\N	\N
+402	4/27/17	Prosaria	Business Development	GM001	0.78	No	Tommy	Nash	0	\N	\N
+403	4/27/17	Prosaria	Team Development (Non-Training)	GM006	0.97	No	Tommy	Nash	0	\N	\N
+404	4/27/17	Prosaria	Business Development	GM001	0.88	No	Tommy	Nash	0	\N	\N
+405	4/27/17	Prosaria	Admin/Legal	GM002	0.57	No	Tommy	Nash	0	\N	\N
+406	4/27/17	Prosaria	Team Development (Non-Training)	GM006	1.05	No	Tommy	Nash	0	\N	\N
+407	4/27/17	Prosaria	Business Development	GM001	0.55	No	Neal	Gordon	0	\N	\N
+408	4/27/17	Prosaria	Business Development	GM001	1.17	No	Neal	Gordon	0	\N	\N
+409	4/27/17	Prosaria	Team Development (Non-Training)	GM006	0.73	No	Robert	Powell	0	\N	\N
+410	4/27/17	Prosaria	Business Development	GM001	6.38	No	Bradley	Hale	0	\N	\N
+411	4/27/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.08	Yes	Catherine	Ford	70	\N	\N
+412	4/27/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.29	Yes	Faye	Cain	70	\N	\N
+413	4/27/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.96	Yes	Neal	Gordon	70	\N	\N
+414	4/27/17	Twitri	CLOB Rearchitecture	BGC001	0.64	No	Tommy	Nash	0	\N	\N
+415	4/28/17	Anil	React Native	RD002	4.35	No	Rudy	Parker	0	\N	\N
+416	4/28/17	Anil	Watchlist Demo	RD003	2.46	No	Eugene	Kim	0	\N	\N
+417	4/28/17	Audosis	Project Wildfire	Audosis003	1.36	Yes	Tommy	Nash	70	\N	\N
+418	4/28/17	Audosis	Project Wildfire	Audosis003	5.04	Yes	Eugene	Kim	70	\N	\N
+419	4/28/17	Audosis	Project Wildfire	Audosis003	6.98	Yes	Robert	Powell	70	\N	\N
+420	4/28/17	Audosis	Project Wildfire	Audosis003	0.53	Yes	Neal	Gordon	70	\N	\N
+421	4/28/17	Olith	Pharos	DV002	7.80	Yes	Hubert	Green	80	\N	\N
+422	4/28/17	Olith	Pharos	DV002	3.61	Yes	Bradley	Hale	80	\N	\N
+423	4/28/17	Olith	Pharos	DV002	2.24	Yes	Rudy	Parker	80	\N	\N
+424	4/28/17	Olith	Pharos	DV002	6.28	Yes	Emma	Clarke	80	\N	\N
+425	4/28/17	Prosaria	Paid Time Off	GM003	7.95	No	Walter	Silva	0	\N	\N
+426	4/28/17	Prosaria	Paid Time Off	GM003	4.17	No	Faye	Cain	0	\N	\N
+427	4/28/17	Prosaria	Business Development	GM001	2.40	No	Tommy	Nash	0	\N	\N
+428	4/28/17	Prosaria	Admin/Legal	GM002	4.15	No	Bradley	Hale	0	\N	\N
+429	4/28/17	Prosaria	Team Development (Non-Training)	GM006	0.88	No	Tommy	Nash	0	\N	\N
+430	4/28/17	Prosaria	Admin/Legal	GM002	0.18	No	Tommy	Nash	0	\N	\N
+431	4/28/17	Prosaria	Team Development (Non-Training)	GM006	0.85	No	Tommy	Nash	0	\N	\N
+432	4/28/17	Prosaria	Team Development (Non-Training)	GM006	2.23	No	Tommy	Nash	0	\N	\N
+433	4/28/17	Prosaria	Team Development (Non-Training)	GM006	1.98	No	Emma	Clarke	0	\N	\N
+434	4/28/17	Prosaria	Business Development	GM001	1.74	No	Neal	Gordon	0	\N	\N
+435	4/28/17	Roonder Technologies LLC	Roonder 3.0	TM001	4.31	Yes	Faye	Cain	70	\N	\N
+436	4/28/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.56	Yes	Catherine	Ford	70	\N	\N
+437	4/28/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.56	Yes	Neal	Gordon	70	\N	\N
+438	4/30/17	Audosis	Project Wildfire	Audosis003	8.03	Yes	Tabitha	Jenkins	70	\N	\N
+439	5/1/17	Audosis	Project Wildfire	Audosis003	2.48	Yes	Tommy	Nash	70	\N	\N
+440	5/1/17	Audosis	Project Wildfire	Audosis003	8.03	Yes	Tabitha	Jenkins	70	\N	\N
+441	5/1/17	Audosis	Project Wildfire	Audosis003	7.23	Yes	Eugene	Kim	70	\N	\N
+442	5/1/17	Audosis	Project Wildfire	Audosis003	1.12	Yes	Robert	Powell	70	\N	\N
+443	5/1/17	Audosis	Project Wildfire	Audosis003	5.17	Yes	Robert	Powell	70	\N	\N
+444	5/1/17	Audosis	Project Wildfire	Audosis003	8.30	Yes	Bernice	Rivera	70	\N	\N
+445	5/1/17	Olith	Pharos	DV002	2.12	Yes	Bradley	Hale	80	\N	\N
+446	5/1/17	Olith	Pharos	DV002	8.10	Yes	Hubert	Green	80	\N	\N
+447	5/1/17	Olith	Pharos	DV002	7.42	Yes	Emma	Clarke	80	\N	\N
+448	5/1/17	Olith	Pharos	DV002	7.16	Yes	Rudy	Parker	80	\N	\N
+449	5/1/17	Prosaria	Team Development (Non-Training)	GM006	2.80	No	Tommy	Nash	0	\N	\N
+450	5/1/17	Prosaria	Team Development (Non-Training)	GM006	1.11	No	Tommy	Nash	0	\N	\N
+451	5/1/17	Prosaria	Admin/Legal	GM002	5.76	No	Bradley	Hale	0	\N	\N
+452	5/1/17	Prosaria	Business Development	GM001	2.63	No	Neal	Gordon	0	\N	\N
+453	5/1/17	Prosaria	Team Development (Non-Training)	GM006	2.02	No	Faye	Cain	0	\N	\N
+454	5/1/17	Prosaria	Admin/Legal	GM002	2.91	No	Tommy	Nash	0	\N	\N
+455	5/1/17	Prosaria	Team Development (Non-Training)	GM006	0.79	No	Emma	Clarke	0	\N	\N
+456	5/1/17	Prosaria	Team Development (Non-Training)	GM006	2.33	No	Robert	Powell	0	\N	\N
+457	5/1/17	Prosaria	Paid Time Off	GM003	8.25	No	Walter	Silva	0	\N	\N
+458	5/1/17	Prosaria	Team Development (Non-Training)	GM006	1.22	No	Rudy	Parker	0	\N	\N
+459	5/1/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.32	Yes	Neal	Gordon	70	\N	\N
+460	5/1/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.56	Yes	Catherine	Ford	70	\N	\N
+461	5/1/17	Roonder Technologies LLC	Roonder 3.0	TM001	6.19	Yes	Faye	Cain	70	\N	\N
+462	5/1/17	Twitri	CLOB Rearchitecture	BGC001	0.98	No	Tommy	Nash	0	\N	\N
+463	5/2/17	Audosis	Project Wildfire	Audosis003	8.03	Yes	Tabitha	Jenkins	70	\N	\N
+464	5/2/17	Audosis	Project Wildfire	Audosis003	4.29	Yes	Tommy	Nash	70	\N	\N
+465	5/2/17	Audosis	Project Wildfire	Audosis003	0.65	Yes	Neal	Gordon	70	\N	\N
+466	5/2/17	Audosis	Project Wildfire	Audosis003	0.64	Yes	Robert	Powell	70	\N	\N
+467	5/2/17	Audosis	Project Wildfire	Audosis003	5.90	Yes	Robert	Powell	70	\N	\N
+468	5/2/17	Audosis	Project Wildfire	Audosis003	0.80	Yes	Robert	Powell	70	\N	\N
+469	5/2/17	Audosis	Project Wildfire	Audosis003	6.98	Yes	Eugene	Kim	70	\N	\N
+470	5/2/17	Audosis	Project Wildfire	Audosis003	7.55	Yes	Bernice	Rivera	70	\N	\N
+471	5/2/17	Olith	Pharos	DV002	8.27	Yes	Bradley	Hale	80	\N	\N
+472	5/2/17	Olith	Pharos	DV002	8.33	Yes	Emma	Clarke	80	\N	\N
+473	5/2/17	Olith	Pharos	DV002	7.84	Yes	Hubert	Green	80	\N	\N
+474	5/2/17	Olith	Pharos	DV002	7.87	Yes	Rudy	Parker	80	\N	\N
+475	5/2/17	Prosaria	Recruiting	GM018	0.77	No	Tommy	Nash	0	\N	\N
+476	5/2/17	Prosaria	Team Development (Non-Training)	GM006	0.70	No	Faye	Cain	0	\N	\N
+477	5/2/17	Prosaria	Business Development	GM001	0.51	No	Neal	Gordon	0	\N	\N
+478	5/2/17	Prosaria	Business Development	GM001	2.92	No	Neal	Gordon	0	\N	\N
+479	5/2/17	Prosaria	Team Development (Non-Training)	GM006	0.70	No	Tommy	Nash	0	\N	\N
+480	5/2/17	Prosaria	Admin/Legal	GM002	1.36	No	Tommy	Nash	0	\N	\N
+481	5/2/17	Prosaria	Team Development (Non-Training)	GM006	1.41	No	Eugene	Kim	0	\N	\N
+482	5/2/17	Prosaria	Paid Time Off	GM003	8.02	No	Walter	Silva	0	\N	\N
+483	5/2/17	Roonder Technologies LLC	Roonder 3.0	TM001	8.08	Yes	Catherine	Ford	70	\N	\N
+484	5/2/17	Roonder Technologies LLC	Roonder 3.0	TM001	6.78	Yes	Faye	Cain	70	\N	\N
+485	5/2/17	Roonder Technologies LLC	Roonder 3.0	TM001	3.25	Yes	Neal	Gordon	70	\N	\N
+486	5/3/17	Audosis	Project Wildfire	Audosis003	2.87	Yes	Tommy	Nash	70	\N	\N
+487	5/3/17	Audosis	Project Wildfire	Audosis003	2.46	Yes	Robert	Powell	70	\N	\N
+488	5/3/17	Audosis	Project Wildfire	Audosis003	6.00	Yes	Robert	Powell	70	\N	\N
+489	5/3/17	Audosis	Project Wildfire	Audosis003	7.60	Yes	Tabitha	Jenkins	70	\N	\N
+490	5/3/17	Audosis	Project Wildfire	Audosis003	1.05	Yes	Neal	Gordon	70	\N	\N
+491	5/3/17	Audosis	Project Wildfire	Audosis003	8.44	Yes	Eugene	Kim	70	\N	\N
+492	5/3/17	Audosis	Project Wildfire	Audosis003	3.21	Yes	Walter	Silva	70	\N	\N
+493	5/3/17	Audosis	Project Wildfire	Audosis003	6.50	Yes	Bernice	Rivera	70	\N	\N
+494	5/3/17	Olith	Pharos	DV002	1.97	Yes	Bradley	Hale	80	\N	\N
+495	5/3/17	Olith	Pharos	DV002	1.30	Yes	Neal	Gordon	80	\N	\N
+496	5/3/17	Olith	Pharos	DV002	8.43	Yes	Hubert	Green	80	\N	\N
+497	5/3/17	Olith	Pharos	DV002	8.35	Yes	Emma	Clarke	80	\N	\N
+498	5/3/17	Olith	Pharos	DV002	8.35	Yes	Rudy	Parker	80	\N	\N
+499	5/3/17	Prosaria	Business Development	GM001	5.95	No	Bradley	Hale	0	\N	\N
+500	5/3/17	Prosaria	Admin/Legal	GM002	1.42	No	Tommy	Nash	0	\N	\N
+501	5/3/17	Prosaria	Business Development	GM001	0.89	No	Tommy	Nash	0	\N	\N
+502	5/3/17	Prosaria	Admin/Legal	GM002	1.94	No	Tommy	Nash	0	\N	\N
+503	5/3/17	Prosaria	Business Development	GM001	2.44	No	Neal	Gordon	0	\N	\N
+504	5/3/17	Prosaria	Business Development	GM001	3.62	No	Walter	Silva	0	\N	\N
+505	5/3/17	Prosaria	Admin/Legal	GM002	1.16	No	Bernice	Rivera	0	\N	\N
+506	5/3/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.92	Yes	Catherine	Ford	70	\N	\N
+507	5/3/17	Roonder Technologies LLC	Roonder 3.0	TM001	3.54	Yes	Neal	Gordon	70	\N	\N
+508	5/3/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.26	Yes	Walter	Silva	70	\N	\N
+509	5/3/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.72	Yes	Faye	Cain	70	\N	\N
+510	5/3/17	Twitri	CLOB Rearchitecture	BGC001	1.66	No	Tommy	Nash	0	\N	\N
+511	5/3/17	Twitri	CLOB Rearchitecture	BGC001	0.66	Yes	Walter	Silva	50	\N	\N
+512	5/4/17	Audosis	Project Wildfire	Audosis003	2.11	Yes	Tommy	Nash	70	\N	\N
+513	5/4/17	Audosis	Project Wildfire	Audosis003	7.81	Yes	Eugene	Kim	70	\N	\N
+514	5/4/17	Audosis	Project Wildfire	Audosis003	8.40	Yes	Tabitha	Jenkins	70	\N	\N
+515	5/4/17	Audosis	Project Wildfire	Audosis003	2.00	Yes	Walter	Silva	70	\N	\N
+516	5/4/17	Audosis	Project Wildfire	Audosis003	8.45	Yes	Robert	Powell	70	\N	\N
+517	5/4/17	Audosis	Project Wildfire	Audosis003	1.31	Yes	Neal	Gordon	70	\N	\N
+518	5/4/17	Olith	Pharos	DV002	4.08	Yes	Bradley	Hale	80	\N	\N
+519	5/4/17	Olith	Pharos	DV002	8.32	Yes	Hubert	Green	80	\N	\N
+520	5/4/17	Olith	Pharos	DV002	8.44	Yes	Emma	Clarke	80	\N	\N
+521	5/4/17	Olith	Pharos	DV002	7.95	Yes	Rudy	Parker	80	\N	\N
+522	5/4/17	Olith	Pharos	DV002	1.04	Yes	Neal	Gordon	80	\N	\N
+523	5/4/17	Prosaria	Business Development	GM001	4.49	No	Bradley	Hale	0	\N	\N
+524	5/4/17	Prosaria	Recruiting	GM018	0.43	No	Tommy	Nash	0	\N	\N
+525	5/4/17	Prosaria	Admin/Legal	GM002	1.11	No	Tommy	Nash	0	\N	\N
+526	5/4/17	Prosaria	Team Development (Non-Training)	GM006	1.12	No	Tommy	Nash	0	\N	\N
+527	5/4/17	Prosaria	Admin/Legal	GM002	0.72	No	Tommy	Nash	0	\N	\N
+528	5/4/17	Prosaria	Business Development	GM001	1.28	No	Tommy	Nash	0	\N	\N
+529	5/4/17	Prosaria	Business Development	GM001	4.35	No	Walter	Silva	0	\N	\N
+530	5/4/17	Prosaria	Training	GM017	1.92	No	Catherine	Ford	0	\N	\N
+531	5/4/17	Prosaria	Business Development	GM001	1.25	No	Neal	Gordon	0	\N	\N
+532	5/4/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.58	Yes	Catherine	Ford	70	\N	\N
+533	5/4/17	Roonder Technologies LLC	Roonder 3.0	TM001	7.65	Yes	Faye	Cain	70	\N	\N
+534	5/4/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.88	Yes	Walter	Silva	70	\N	\N
+535	5/4/17	Roonder Technologies LLC	Roonder 3.0	TM001	4.63	Yes	Neal	Gordon	70	\N	\N
+536	5/4/17	Twitri	CLOB Rearchitecture	BGC001	2.13	No	Tommy	Nash	0	\N	\N
+537	5/5/17	Anil	React Native	RD002	5.52	No	Rudy	Parker	0	\N	\N
+538	5/5/17	Audosis	Project Wildfire	Audosis003	8.02	Yes	Tabitha	Jenkins	70	\N	\N
+539	5/5/17	Audosis	Project Wildfire	Audosis003	7.67	Yes	Robert	Powell	70	\N	\N
+540	5/5/17	Audosis	Project Wildfire	Audosis003	0.81	Yes	Neal	Gordon	70	\N	\N
+541	5/5/17	Audosis	Project Wildfire	Audosis003	0.78	No	Tommy	Nash	0	\N	\N
+542	5/5/17	Audosis	Project Wildfire	Audosis003	6.15	Yes	Eugene	Kim	70	\N	\N
+543	5/5/17	Audosis	Project Wildfire	Audosis003	1.42	Yes	Walter	Silva	70	\N	\N
+544	5/5/17	Olith	Pharos	DV002	0.23	Yes	Rudy	Parker	80	\N	\N
+545	5/5/17	Olith	Pharos	DV002	6.97	Yes	Hubert	Green	80	\N	\N
+546	5/5/17	Olith	Pharos	DV002	7.10	Yes	Emma	Clarke	80	\N	\N
+547	5/5/17	Prosaria	Business Development	GM001	7.53	No	Bradley	Hale	0	\N	\N
+548	5/5/17	Prosaria	Team Development (Non-Training)	GM006	2.13	No	Faye	Cain	0	\N	\N
+549	5/5/17	Prosaria	Team Development (Non-Training)	GM006	2.14	No	Catherine	Ford	0	\N	\N
+550	5/5/17	Prosaria	Business Development	GM001	0.96	No	Neal	Gordon	0	\N	\N
+551	5/5/17	Prosaria	Business Development	GM001	1.08	No	Neal	Gordon	0	\N	\N
+552	5/5/17	Prosaria	Business Development	GM001	0.97	No	Neal	Gordon	0	\N	\N
+553	5/5/17	Prosaria	Business Development	GM001	1.58	No	Neal	Gordon	0	\N	\N
+554	5/5/17	Prosaria	Business Development	GM001	1.24	No	Neal	Gordon	0	\N	\N
+555	5/5/17	Prosaria	Team Development (Non-Training)	GM006	1.53	No	Tommy	Nash	0	\N	\N
+556	5/5/17	Prosaria	Team Development (Non-Training)	GM006	1.44	No	Tommy	Nash	0	\N	\N
+557	5/5/17	Prosaria	Business Development	GM001	0.84	No	Tommy	Nash	0	\N	\N
+558	5/5/17	Prosaria	Business Development	GM001	0.36	No	Tommy	Nash	0	\N	\N
+559	5/5/17	Prosaria	Team Development (Non-Training)	GM006	0.65	No	Tommy	Nash	0	\N	\N
+560	5/5/17	Prosaria	Business Development	GM001	1.74	No	Tommy	Nash	0	\N	\N
+561	5/5/17	Prosaria	Team Development (Non-Training)	GM006	2.34	No	Eugene	Kim	0	\N	\N
+562	5/5/17	Prosaria	Team Development (Non-Training)	GM006	0.78	No	Rudy	Parker	0	\N	\N
+563	5/5/17	Prosaria	Team Development (Non-Training)	GM006	1.44	No	Hubert	Green	0	\N	\N
+564	5/5/17	Prosaria	Business Development	GM001	4.85	No	Walter	Silva	0	\N	\N
+565	5/5/17	Prosaria	Business Development	GM001	0.53	No	Rudy	Parker	0	\N	\N
+566	5/5/17	Prosaria	Team Development (Non-Training)	GM006	1.05	No	Emma	Clarke	0	\N	\N
+567	5/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	5.45	Yes	Faye	Cain	70	\N	\N
+568	5/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	0.90	Yes	Catherine	Ford	70	\N	\N
+569	5/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	0.86	Yes	Catherine	Ford	70	\N	\N
+570	5/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.77	Yes	Catherine	Ford	70	\N	\N
+571	5/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	2.91	Yes	Catherine	Ford	70	\N	\N
+572	5/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.65	Yes	Neal	Gordon	70	\N	\N
+573	5/5/17	Roonder Technologies LLC	Roonder 3.0	TM001	3.47	Yes	Walter	Silva	70	\N	\N
+574	5/5/17	Twitri	CLOB Rearchitecture	BGC001	0.57	No	Tommy	Nash	0	\N	\N
+575	5/8/17	Audosis	Project Wildfire	Audosis003	3.08	Yes	Walter	Silva	70	\N	\N
+576	5/8/17	Audosis	Project Wildfire	Audosis003	0.90	Yes	Tommy	Nash	70	\N	\N
+577	5/8/17	Audosis	Project Wildfire	Audosis003	3.81	Yes	Robert	Powell	70	\N	\N
+578	5/8/17	Olith	Pharos	DV002	0.68	Yes	Bradley	Hale	80	\N	\N
+579	5/8/17	Prosaria	Business Development	GM001	0.40	No	Walter	Silva	0	\N	\N
+580	5/8/17	Prosaria	Business Development	GM001	0.93	No	Tommy	Nash	0	\N	\N
+581	5/8/17	Prosaria	Business Development	GM001	0.64	No	Walter	Silva	0	\N	\N
+582	5/8/17	Prosaria	Business Development	GM001	1.74	No	Tommy	Nash	0	\N	\N
+583	5/8/17	Roonder Technologies LLC	Roonder 3.0	TM001	0.47	Yes	Walter	Silva	70	\N	\N
+584	5/8/17	Roonder Technologies LLC	Roonder 3.0	TM001	0.65	No	Tommy	Nash	0	\N	\N
+585	5/8/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.00	Yes	Neal	Gordon	70	\N	\N
+586	5/8/17	Roonder Technologies LLC	Roonder 3.0	TM001	1.24	Yes	Neal	Gordon	70	\N	\N
+587	5/8/17	Roonder Technologies LLC	Roonder 3.0	TM001	4.24	Yes	Catherine	Ford	70	\N	\N
+588	5/8/17	Twitri	CLOB Rearchitecture	BGC001	1.06	No	Tommy	Nash	0	\N	\N
+590	Sun Feb 16 2020 12:07:36 GMT-0500 (Eastern Standard Time)	T	T	T	3	Y	T	T	3	2020-02-16	2020-02-16
+591	Sun Feb 16 2020 12:08:18 GMT-0500 (Eastern Standard Time)	S	T	t	4	Y	s	T	4	2020-02-16	2020-02-16
+592	Sun Feb 16 2020 12:09:30 GMT-0500 (Eastern Standard Time)	Tst	Test	Test	5	Yes	Test	Test	4	2020-02-16	2020-02-16
+\.
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.projects_id_seq', 2, true);
+
+
+--
+-- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.projects
+    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -46,7 +46,7 @@ ORDER BY "BillableHours" DESC;
 
 router.get('/', async (req,res) => {
   const val = await sequelize.query(
-    `SELECT "Client", "Project", SUM("Hours") as Hours, SUM(CASE WHEN "Billable" = 'Yes' THEN "Hours" ELSE 0 END) as "BillableHours", (SUM(CASE WHEN "Billable" = 'Yes' THEN "Hours" * "Billable_Rate" ELSE 0 END)) as Billable from projects A Group by "Project", "Client" ORDER BY "BillableHours" DESC;`
+    `SELECT "Project", "Client", SUM("Hours") as "Hours", SUM(CASE WHEN "Billable" = 'Yes' THEN "Hours" ELSE 0 END) as "BillableHours", (SUM(CASE WHEN "Billable" = 'Yes' THEN "Hours" * "Billable_Rate" ELSE 0 END)) as "BillableAmt" from projects A Group by "Project", "Client" ORDER BY "BillableHours" DESC;`
     ,
     {
       type: QueryTypes.SELECT
@@ -55,15 +55,16 @@ router.get('/', async (req,res) => {
   return res.json(val);
 });
 
-
+id = 590 
 router.post('/', (req, res) => {
   let { content } = req.body;
-  
-  Projects.create({ content })
+  console.log(content) 
+  Projects.create({ id: id++, Date: new Date().toString(), ...content })
     .then(post => {
       res.status(201).json(post);
     })
     .catch(err => {
+      console.log(err)
       res.status(400).json(err);
     });
 });

@@ -1,3 +1,5 @@
+![Demo](./ScreenShot.png?raw=true "Title")
+
 ## Stack
 
 *API*
@@ -33,7 +35,7 @@ createdb -h localhost -U ctp_user app2019_development
 ```
 
 ```
-COPY projects FROM '/Users/h10619/Desktop/Projects.csv' DELIMITER ',' CSV;
+COPY projects from 'FILE_PATH' (format csv, null "Null", DELIMITER ',' ,HEADER );
 ```
 
 > You will create a DB for each project you start based on this repo. For other projects change `app2019_development` to the new apps database name.
